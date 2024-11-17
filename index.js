@@ -1,3 +1,18 @@
+const dns = require('node:dns');
+const os = require('node:os');
+
+const options = { family: 4 };
+
+dns.lookup(os.hostname(), options, (err, addr) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(`IPv4 address: ${addr}`);
+  }
+});
+
+
+
 const dgram = require('node:dgram');
 const UdpServer = dgram.createSocket('udp4');
 
